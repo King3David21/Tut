@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8b2h34emwsso"]
+[gd_scene load_steps=25 format=3 uid="uid://b8b2h34emwsso"]
 
 [ext_resource type="Texture2D" uid="uid://bdhcjtr5o681c" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Packs/Characters/Chibi Enemies Pack/spritesheets/dog-idle.png" id="1_0oc25"]
 [ext_resource type="Script" path="res://Dog.gd" id="1_wcjww"]
 [ext_resource type="Texture2D" uid="uid://djnp65ythvv8w" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Packs/Packs/Sunnyland/spritesheets/enemy-deadth.png" id="2_a3dor"]
+[ext_resource type="Texture2D" uid="uid://cnty0jr12v8aa" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Packs/Characters/Chibi Enemies Pack/spritesheets/dog.png" id="4_q0k5s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l252t"]
 size = Vector2(14, 13)
@@ -55,6 +56,22 @@ region = Rect2(132, 0, 33, 26)
 atlas = ExtResource("1_0oc25")
 region = Rect2(165, 0, 33, 26)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkfpk"]
+atlas = ExtResource("4_q0k5s")
+region = Rect2(0, 0, 33, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wghi0"]
+atlas = ExtResource("4_q0k5s")
+region = Rect2(33, 0, 33, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2hg0"]
+atlas = ExtResource("4_q0k5s")
+region = Rect2(66, 0, 33, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tej25"]
+atlas = ExtResource("4_q0k5s")
+region = Rect2(99, 0, 33, 26)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssy05"]
 animations = [{
 "frames": [{
@@ -103,14 +120,29 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkfpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wghi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2hg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tej25")
+}],
 "loop": true,
 "name": &"run",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahvw4"]
-radius = 44.0454
+radius = 181.044
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdjs6"]
+size = Vector2(15, 11)
 
 [node name="Dog" type="CharacterBody2D"]
 script = ExtResource("1_wcjww")
@@ -126,9 +158,17 @@ sprite_frames = SubResource("SpriteFrames_ssy05")
 animation = &"idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_ahvw4")
 
+[node name="PlayerDeath" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
+position = Vector2(-1, -7)
+shape = SubResource("RectangleShape2D_kdjs6")
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]

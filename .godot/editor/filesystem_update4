@@ -1,5 +1,6 @@
-res://Enemy.tscn
 res://main.tscn
+res://Dog.gd
 res://world.tscn
 res://Player/player.tscn
 res://bg.tscn
+res://Enemy.tscn

@@ -7,13 +7,17 @@ func _physics_process(delta):
 	#Gravity for dog 
 	velocity.y += gravity * delta 
 	if chase == true:
+		get_node("CollisionShape2D/AnimatedSprite2D").play("run")
 		player = get_node("../../Player/Player")
 		var direction = (player.position - self.position).normalized()
 		if direction.x > 0:
-			get_node("AnimatedSprite2D").flip_h = true
+			get_node("CollisionShape2D/AnimatedSprite2D").flip_h = true
 		else: 
-			get_node("AnimatedSprite2D").flip_h = false
+			get_node("CollisionShape2D/AnimatedSprite2D").flip_h = false
 		velocity.x = direction.x * SPEED
+	else:
+		get_node("CollisionShape2D/AnimatedSprite2D").play("idle")
+		velocity.x = 0
 	move_and_slide()
 
 func _on_player_detection_body_entered(body):
@@ -24,3 +28,7 @@ func _on_player_detection_body_entered(body):
 func _on_player_detection_body_exited(body):
 	if body.name == "Player":
 		chase = false
+
+
+func _on_player_death_body_entered(body):
+	
