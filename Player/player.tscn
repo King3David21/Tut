@@ -19,8 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://bdteqba4b3hn2" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Packs/Characters/sunny-bunny/Sprites/run/_0005_Layer-6.png" id="17_msbjc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yrdj3"]
-radius = 12.0
-height = 36.0
+radius = 8.0
+height = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdofo"]
 atlas = ExtResource("2_032fh")
@@ -256,12 +256,11 @@ position = Vector2(-1, 5)
 shape = SubResource("CapsuleShape2D_yrdj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.00001, -5)
-scale = Vector2(2.375, 1.34524)
+position = Vector2(-1.90735e-06, 3)
+scale = Vector2(1.1875, 0.553572)
 sprite_frames = SubResource("SpriteFrames_k8tg4")
 animation = &"idle"
 frame = 1
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.6, 1.6)

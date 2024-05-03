@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmi1a24c3iijy"]
+[gd_scene load_steps=8 format=3 uid="uid://cmi1a24c3iijy"]
 
 [ext_resource type="PackedScene" uid="uid://cas0se18cvab7" path="res://Player/player.tscn" id="1_3s5vu"]
 [ext_resource type="Script" path="res://bg.gd" id="1_8bxdi"]
 [ext_resource type="Texture2D" uid="uid://blvh0blfa37yf" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Packs/Environments/Day-Platformer/PNG/tileset.png" id="1_i6mni"]
 [ext_resource type="Texture2D" uid="uid://bfbkqk1o575ss" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Packs/Environments/Day-Platformer/PNG/sky.png" id="2_24buq"]
+[ext_resource type="PackedScene" uid="uid://b8b2h34emwsso" path="res://Enemy.tscn" id="5_wxg7f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qgwt5"]
 texture = ExtResource("1_i6mni")
@@ -352,5 +353,12 @@ position = Vector2(467, 428.5)
 scale = Vector2(157.5, 10.1375)
 texture = ExtResource("2_24buq")
 
-[node name="Player" parent="." instance=ExtResource("1_3s5vu")]
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource("1_3s5vu")]
 position = Vector2(483, 485)
+
+[node name="Mobs" type="Node2D" parent="."]
+
+[node name="Dog" parent="Mobs" instance=ExtResource("5_wxg7f")]
+position = Vector2(328, 480)
